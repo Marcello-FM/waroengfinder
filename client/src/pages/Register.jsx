@@ -24,7 +24,7 @@ export const Register = ({ onLogin }) => {
 
     try {
       const response = await axios.post(
-        "https://waroengfinder-production.up.railway.app",
+        "https://waroengfinder-production.up.railway.app/register",
         {
           fullName,
           email,
