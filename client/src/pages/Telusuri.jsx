@@ -11,7 +11,9 @@ export const DetailTelusuri = () => {
   const fetchWarungs = async (filterType) => {
     setLoading(true);
     try {
-      const response = await axios.get(`http://localhost:5000/warungs?sort=${filterType}`);
+      const response = await axios.get(
+        `http://https://waroengfinder-production.up.railway.app/warungs?sort=${filterType}`
+      );
       setWarungs(response.data);
     } catch (error) {
       console.error(error);
@@ -43,15 +45,14 @@ export const DetailTelusuri = () => {
 
   return (
     <div className="min-h-screen relative bg-[#f0fdf4]">
-      
-      <div 
+      <div
         className="absolute inset-0 z-0 opacity-10 pointer-events-none"
         style={{
           backgroundImage: `url('https://www.transparenttextures.com/patterns/food.png')`,
-          backgroundSize: '400px'
+          backgroundSize: "400px",
         }}
       />
-      
+
       <div className="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-green-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 z-0 animate-pulse"></div>
       <div className="absolute bottom-0 left-0 -mb-20 -ml-20 w-96 h-96 bg-yellow-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 z-0 animate-pulse"></div>
 
@@ -90,13 +91,18 @@ export const DetailTelusuri = () => {
         {loading ? (
           <div className="text-center py-20">
             <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-green-500 border-t-transparent"></div>
-            <p className="mt-4 text-green-700 font-bold">Sedang memuat kuliner...</p>
+            <p className="mt-4 text-green-700 font-bold">
+              Sedang memuat kuliner...
+            </p>
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredWarungs.length > 0 ? (
               filteredWarungs.map((warung) => (
-                <Link to={`/warung/${warung.slug || warung.id}`} key={warung.id}>
+                <Link
+                  to={`/warung/${warung.slug || warung.id}`}
+                  key={warung.id}
+                >
                   <div className="group bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden border border-green-50 h-full flex flex-col">
                     <div className="h-48 w-full bg-gray-200 relative overflow-hidden">
                       <img
@@ -117,10 +123,13 @@ export const DetailTelusuri = () => {
                       <p className="text-gray-500 text-sm mb-4 flex items-center gap-1">
                         📍 {warung.address || "Alamat belum tersedia"}
                       </p>
-                      
+
                       <div className="mt-auto pt-4 border-t border-dashed border-gray-200 flex justify-between items-center text-xs font-semibold">
                         <span className="text-gray-400 flex items-center gap-1">
-                          💬 {warung.review_count ? `${warung.review_count} Ulasan` : "Baru"}
+                          💬{" "}
+                          {warung.review_count
+                            ? `${warung.review_count} Ulasan`
+                            : "Baru"}
                         </span>
                         <span className="text-white bg-[#387647] px-4 py-1.5 rounded-full shadow-md transform group-hover:scale-105 transition-transform">
                           Lihat Detail →
@@ -133,8 +142,12 @@ export const DetailTelusuri = () => {
             ) : (
               <div className="col-span-full flex flex-col items-center justify-center py-20 text-center">
                 <div className="text-6xl mb-4">🍲</div>
-                <h3 className="text-xl font-bold text-gray-700">Yah, warung tidak ditemukan</h3>
-                <p className="text-gray-500">Coba cari dengan kata kunci lain.</p>
+                <h3 className="text-xl font-bold text-gray-700">
+                  Yah, warung tidak ditemukan
+                </h3>
+                <p className="text-gray-500">
+                  Coba cari dengan kata kunci lain.
+                </p>
               </div>
             )}
           </div>

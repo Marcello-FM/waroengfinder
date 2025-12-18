@@ -15,7 +15,9 @@ export const DetailWarungUniversal = () => {
     const fetchData = async () => {
       try {
         // Panggil Backend pakai slug
-        const response = await axios.get(`http://localhost:5000/warungs/${slug}`);
+        const response = await axios.get(
+          `http://https://waroengfinder-production.up.railway.app/warungs/${slug}`
+        );
         setWarung(response.data.warung);
         setMenus(response.data.menus);
         try {
@@ -38,7 +40,7 @@ export const DetailWarungUniversal = () => {
         } catch {
           setIsFavorite(false);
         }
-      // eslint-disable-next-line no-unused-vars
+        // eslint-disable-next-line no-unused-vars
       } catch (error) {
         console.error("Warung tidak ditemukan");
       } finally {
@@ -91,7 +93,8 @@ export const DetailWarungUniversal = () => {
   };
 
   if (loading) return <div className="text-center py-20">Memuat...</div>;
-  if (!warung) return <div className="text-center py-20">Warung tidak ditemukan 😢</div>;
+  if (!warung)
+    return <div className="text-center py-20">Warung tidak ditemukan 😢</div>;
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -113,7 +116,11 @@ export const DetailWarungUniversal = () => {
 
       {/* Banner */}
       <div className="relative h-[400px]">
-        <img src={warung.image_url || "https://placehold.co/600x400"} alt={warung.name} className="w-full h-full object-cover" />
+        <img
+          src={warung.image_url || "https://placehold.co/600x400"}
+          alt={warung.name}
+          className="w-full h-full object-cover"
+        />
         <div className="absolute inset-0 bg-black/40" />
         <div className="absolute bottom-0 p-8 w-full text-center text-white">
           <h1 className="text-4xl font-black font-serif mb-2">{warung.name}</h1>
@@ -126,14 +133,19 @@ export const DetailWarungUniversal = () => {
 
       {/* Daftar Menu */}
       <div className="max-w-4xl mx-auto px-4 py-10">
-        <h2 className="text-2xl font-black text-[#387647] mb-6 border-l-4 border-yellow-400 pl-4">Menu Makanan</h2>
-        
+        <h2 className="text-2xl font-black text-[#387647] mb-6 border-l-4 border-yellow-400 pl-4">
+          Menu Makanan
+        </h2>
+
         {menus.length === 0 ? (
           <p className="text-gray-400 italic">Belum ada menu terdaftar.</p>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {menus.map((item) => (
-              <div key={item.id} className="bg-white p-4 rounded-xl shadow-sm border flex justify-between items-center hover:shadow-md transition">
+              <div
+                key={item.id}
+                className="bg-white p-4 rounded-xl shadow-sm border flex justify-between items-center hover:shadow-md transition"
+              >
                 <div className="flex items-center gap-3">
                   <div className="text-3xl">{item.emoji || "🍲"}</div>
                   <h3 className="font-bold text-gray-700">{item.name}</h3>
@@ -148,8 +160,8 @@ export const DetailWarungUniversal = () => {
 
         {/* Ulasan Section */}
         <div className="mt-12">
-           {/* Kita kirim ID warung agar ulasan masuk ke tempat yang benar */}
-           <UlasanSection warungId={warung.id} />
+          {/* Kita kirim ID warung agar ulasan masuk ke tempat yang benar */}
+          <UlasanSection warungId={warung.id} />
         </div>
       </div>
     </div>

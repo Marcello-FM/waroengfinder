@@ -6,14 +6,17 @@ import { useNavigate } from "react-router-dom";
 export const TambahWarung = () => {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("authUser"));
-  
+
   const [formData, setFormData] = useState({
-    name: "", address: "", imageUrl: "", description: ""
+    name: "",
+    address: "",
+    imageUrl: "",
+    description: "",
   });
 
   // State khusus untuk menampung daftar menu
   const [menuList, setMenuList] = useState([
-    { name: "", price: "" } // Menu pertama (kosong)
+    { name: "", price: "" }, // Menu pertama (kosong)
   ]);
 
   const handleChange = (e) => {
@@ -47,15 +50,21 @@ export const TambahWarung = () => {
     }
 
     try {
-      await axios.post("http://localhost:5000/request-warung", {
-        userId: user.id,
-        ...formData,
-        menus: menuList // Kirim daftar menu juga
-      });
+      await axios.post(
+        "http://https://waroengfinder-production.up.railway.app/request-warung",
+        {
+          userId: user.id,
+          ...formData,
+          menus: menuList, // Kirim daftar menu juga
+        }
+      );
 
-      Swal.fire("Berhasil", "Rekomendasi warung & menu terkirim ke Admin!", "success")
-        .then(() => navigate("/beranda"));
-    // eslint-disable-next-line no-unused-vars
+      Swal.fire(
+        "Berhasil",
+        "Rekomendasi warung & menu terkirim ke Admin!",
+        "success"
+      ).then(() => navigate("/beranda"));
+      // eslint-disable-next-line no-unused-vars
     } catch (_) {
       Swal.fire("Gagal", "Terjadi kesalahan.", "error");
     }
@@ -80,7 +89,8 @@ export const TambahWarung = () => {
             Tambah Warung & Menu
           </h2>
           <p className="text-sm md:text-base text-gray-500 max-w-xl mx-auto">
-            Bantu mahasiswa lain menemukan tempat makan favoritmu dengan mengisi informasi warung dan menu andalan di bawah ini.
+            Bantu mahasiswa lain menemukan tempat makan favoritmu dengan mengisi
+            informasi warung dan menu andalan di bawah ini.
           </p>
         </div>
 
@@ -126,13 +136,16 @@ export const TambahWarung = () => {
             <div className="flex justify-between items-center">
               <div className="flex flex-col">
                 <div className="flex items-center gap-2">
-                  <h3 className="font-bold text-gray-700">Daftar Menu Unggulan</h3>
+                  <h3 className="font-bold text-gray-700">
+                    Daftar Menu Unggulan
+                  </h3>
                   <span className="text-[11px] uppercase tracking-[0.2em] text-green-600 bg-green-50 px-2 py-0.5 rounded-full font-semibold">
                     Step 2
                   </span>
                 </div>
                 <p className="text-xs text-gray-500 mt-1">
-                  Tambahkan beberapa menu utama beserta harganya. Kamu bisa menambah lebih dari satu menu.
+                  Tambahkan beberapa menu utama beserta harganya. Kamu bisa
+                  menambah lebih dari satu menu.
                 </p>
               </div>
               <button

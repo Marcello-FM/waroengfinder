@@ -121,7 +121,9 @@ export const DetailWarungCello = () => {
 
     const fetchWarungData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/warungs/2");
+        const response = await axios.get(
+          "http://https://waroengfinder-production.up.railway.app/warungs/2"
+        );
         setWarungData(response.data.warung);
       } catch (error) {
         console.error(error);
@@ -194,7 +196,7 @@ export const DetailWarungCello = () => {
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-linear-to-t from-[#C2410C] via-transparent to-transparent opacity-90" />
-        
+
         <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-8">
           <div className="bg-white rounded-3xl shadow-2xl p-6 max-w-4xl mx-auto border-b-4 border-[#C2410C]">
             <h1 className="text-3xl sm:text-5xl font-black text-[#C2410C] font-serif text-center mb-2">

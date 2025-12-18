@@ -19,9 +19,13 @@ export const AdminDashboard = () => {
 
   const fetchRequests = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/admin/requests");
+      const response = await axios.get(
+        "http://https://waroengfinder-production.up.railway.app/admin/requests"
+      );
       setRequests(response.data);
-    } catch (error) { console.error(error); }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handleApprove = async (id, name) => {
@@ -31,10 +35,12 @@ export const AdminDashboard = () => {
       icon: "question",
       showCancelButton: true,
       confirmButtonText: "Ya, Tayangkan!",
-      confirmButtonColor: "#387647"
+      confirmButtonColor: "#387647",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        await axios.post(`http://localhost:5000/admin/approve/${id}`);
+        await axios.post(
+          `http://https://waroengfinder-production.up.railway.app/admin/approve/${id}`
+        );
         Swal.fire("Sukses!", "Warung sudah tayang.", "success");
         fetchRequests();
       }
@@ -48,10 +54,12 @@ export const AdminDashboard = () => {
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#d33",
-      confirmButtonText: "Hapus"
+      confirmButtonText: "Hapus",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        await axios.delete(`http://localhost:5000/admin/reject/${id}`);
+        await axios.delete(
+          `http://https://waroengfinder-production.up.railway.app/admin/reject/${id}`
+        );
         Swal.fire("Dihapus", "", "success");
         fetchRequests();
       }
@@ -64,7 +72,9 @@ export const AdminDashboard = () => {
         <div className="flex justify-between items-center mb-8 bg-[linear-gradient(90deg,rgba(56,118,71,0.9)_0%,rgba(255,232,135,0.9)_100%)] p-6 rounded-2xl shadow-[0_12px_30px_rgba(0,0,0,0.35)] border border-white/20">
           <div>
             <h1 className="text-3xl font-black text-white">Admin Panel 🛡️</h1>
-            <p className="text-emerald-50 text-sm">Kelola rekomendasi warung dari pengguna</p>
+            <p className="text-emerald-50 text-sm">
+              Kelola rekomendasi warung dari pengguna
+            </p>
           </div>
           <button
             onClick={() => navigate("/beranda")}
@@ -76,7 +86,9 @@ export const AdminDashboard = () => {
 
         <div className="bg-white/95 rounded-2xl shadow-xl overflow-hidden border border-emerald-900/10">
           <div className="p-6 border-b border-emerald-900/10 flex justify-between items-center bg-emerald-50/60">
-            <h2 className="text-xl font-bold text-[#052e16]">Daftar Antrean ({requests.length})</h2>
+            <h2 className="text-xl font-bold text-[#052e16]">
+              Daftar Antrean ({requests.length})
+            </h2>
           </div>
 
           {requests.length === 0 ? (
@@ -98,7 +110,9 @@ export const AdminDashboard = () => {
                   <tr key={req.id} className="hover:bg-emerald-50/60">
                     <td className="p-4 font-bold text-[#387647]">{req.name}</td>
                     <td className="p-4 text-sm text-gray-700">{req.address}</td>
-                    <td className="p-4 text-sm text-gray-600 italic">"{req.description}"</td>
+                    <td className="p-4 text-sm text-gray-600 italic">
+                      "{req.description}"
+                    </td>
                     <td className="p-4">
                       <div className="flex justify-center gap-2">
                         <button

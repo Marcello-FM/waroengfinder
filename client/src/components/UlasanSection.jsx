@@ -14,7 +14,7 @@ useEffect(() => {
     const fetchReviews = async () => {
         try {
         if (!warungId) return;
-        const response = await axios.get(`http://localhost:5000/reviews/${warungId}`);
+        const response = await axios.get(`http://https://waroengfinder-production.up.railway.app/reviews/${warungId}`);
         
         if (Array.isArray(response.data)) {
             setReviews(response.data);
@@ -43,7 +43,7 @@ const handleSubmit = async (e) => {
     }
 
     try {
-        await axios.post("http://localhost:5000/reviews", {
+        await axios.post("http://https://waroengfinder-production.up.railway.app/reviews", {
             userId: user.id,
             warungId: warungId,
             rating: rating,
@@ -61,7 +61,7 @@ const handleSubmit = async (e) => {
         setRating(0);
         setComment("");
         
-        const response = await axios.get(`http://localhost:5000/reviews/${warungId}`);
+        const response = await axios.get(`http://https://waroengfinder-production.up.railway.app/reviews/${warungId}`);
         if (Array.isArray(response.data)) {
             setReviews(response.data);
         } else {

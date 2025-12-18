@@ -121,7 +121,9 @@ export const DetailWarungNaswa = () => {
 
     const fetchWarungData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/warungs/3");
+        const response = await axios.get(
+          "http://https://waroengfinder-production.up.railway.app/warungs/3"
+        );
         setWarungData(response.data.warung);
       } catch (error) {
         console.error(error);

@@ -121,7 +121,9 @@ export const DetailWarungMuaz = () => {
 
     const fetchWarungData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/warungs/1");
+        const response = await axios.get(
+          "http://https://waroengfinder-production.up.railway.app/warungs/1"
+        );
         setWarungData(response.data.warung);
       } catch (error) {
         console.error(error);
