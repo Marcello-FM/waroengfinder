@@ -119,16 +119,20 @@ export const Beranda = ({ onLogout }) => {
         </div>
 
         {/* Hero section */}
-        <section className="max-w-6xl mx-auto rounded-3xl shadow-[0px_7px_4px_#00000040] bg-[linear-gradient(180deg,rgba(104,220,132,1)_0%,rgba(56,118,71,1)_100%)] px-6 sm:px-10 py-10 sm:py-14 text-center text-white animate-fade-up" style={{ "--animation-delay": "0.05s" }}>
+        <section
+          className="max-w-6xl mx-auto rounded-3xl shadow-[0px_7px_4px_#00000040] bg-[linear-gradient(180deg,rgba(104,220,132,1)_0%,rgba(56,118,71,1)_100%)] px-6 sm:px-10 py-10 sm:py-14 text-center text-white animate-fade-up"
+          style={{ "--animation-delay": "0.05s" }}
+        >
           <h2 className="font-['Playfair-Black',Helvetica] font-black text-3xl sm:text-4xl lg:text-5xl leading-tight mb-4">
             Selamat Datang di
             <br />
             Waroeng Finder!
           </h2>
           <p className="font-['Playfair-Medium',Helvetica] font-medium text-base sm:text-lg lg:text-xl max-w-3xl mx-auto">
-            Lagi laper tapi bingung mau makan di mana? Tenang! Biar kami bantu cari
-            yang Murah, Enak, dan Dekat! Waroeng Finder ngebantu kamu nemuin tempat
-            makan paling worth it. Cukup temukan, datangi, dan nikmati!
+            Lagi laper tapi bingung mau makan di mana? Tenang! Biar kami bantu
+            cari yang Murah, Enak, dan Dekat! Waroeng Finder ngebantu kamu
+            nemuin tempat makan paling worth it. Cukup temukan, datangi, dan
+            nikmati!
           </p>
         </section>
 
@@ -211,16 +215,16 @@ export const Beranda = ({ onLogout }) => {
         </section>
       </main>
       {/* Tombol Melayang Tambah Warung */}
-<Link to="/tambah-warung">
-  <div className="fixed bottom-8 right-8 z-50 group">
-    <button className="w-16 h-16 bg-[#387647] rounded-full shadow-[0_4px_20px_rgba(56,118,71,0.4)] flex items-center justify-center text-white text-3xl font-bold hover:scale-110 hover:rotate-90 transition-all duration-300 border-4 border-[#f0fdf4]">
-      +
-    </button>
-    <span className="absolute right-20 top-1/2 -translate-y-1/2 bg-white px-4 py-2 rounded-lg shadow-lg text-[#387647] font-bold text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-      Rekomendasikan Warung
-    </span>
-  </div>
-</Link>
+      <Link to="/tambah-warung">
+        <div className="fixed bottom-8 right-8 z-50 group">
+          <button className="w-16 h-16 bg-[#387647] rounded-full shadow-[0_4px_20px_rgba(56,118,71,0.4)] flex items-center justify-center text-white text-3xl font-bold hover:scale-110 hover:rotate-90 transition-all duration-300 border-4 border-[#f0fdf4]">
+            +
+          </button>
+          <span className="absolute right-20 top-1/2 -translate-y-1/2 bg-white px-4 py-2 rounded-lg shadow-lg text-[#387647] font-bold text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+            Rekomendasikan Warung
+          </span>
+        </div>
+      </Link>
     </div>
   );
 };

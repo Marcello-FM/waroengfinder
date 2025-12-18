@@ -51,7 +51,7 @@ export const TambahWarung = () => {
 
     try {
       await axios.post(
-        "http://https://waroengfinder-production.up.railway.app/request-warung",
+        "https://waroengfinder-production.up.railway.app/request-warung",
         {
           userId: user.id,
           ...formData,

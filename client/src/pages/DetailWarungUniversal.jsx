@@ -16,7 +16,7 @@ export const DetailWarungUniversal = () => {
       try {
         // Panggil Backend pakai slug
         const response = await axios.get(
-          `http://https://waroengfinder-production.up.railway.app/warungs/${slug}`
+          `https://waroengfinder-production.up.railway.app/warungs/${slug}`
         );
         setWarung(response.data.warung);
         setMenus(response.data.menus);

@@ -20,7 +20,7 @@ export const AdminDashboard = () => {
   const fetchRequests = async () => {
     try {
       const response = await axios.get(
-        "http://https://waroengfinder-production.up.railway.app/admin/requests"
+        "https://waroengfinder-production.up.railway.app/admin/requests"
       );
       setRequests(response.data);
     } catch (error) {
@@ -39,7 +39,7 @@ export const AdminDashboard = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         await axios.post(
-          `http://https://waroengfinder-production.up.railway.app/admin/approve/${id}`
+          `https://waroengfinder-production.up.railway.app/admin/approve/${id}`
         );
         Swal.fire("Sukses!", "Warung sudah tayang.", "success");
         fetchRequests();
@@ -58,7 +58,7 @@ export const AdminDashboard = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         await axios.delete(
-          `http://https://waroengfinder-production.up.railway.app/admin/reject/${id}`
+          `https://waroengfinder-production.up.railway.app/admin/reject/${id}`
         );
         Swal.fire("Dihapus", "", "success");
         fetchRequests();

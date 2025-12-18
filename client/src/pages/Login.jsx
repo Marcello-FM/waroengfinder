@@ -12,7 +12,7 @@ export const Login = ({ onLogin }) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://https://waroengfinder-production.up.railway.app/login",
+        "https://waroengfinder-production.up.railway.app/login",
         { email, password }
       );
       const userData = response.data;

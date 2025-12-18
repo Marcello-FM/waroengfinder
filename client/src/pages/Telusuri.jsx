@@ -12,7 +12,7 @@ export const DetailTelusuri = () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        `http://https://waroengfinder-production.up.railway.app/warungs?sort=${filterType}`
+        `https://waroengfinder-production.up.railway.app/warungs?sort=${filterType}`
       );
       setWarungs(response.data);
     } catch (error) {
