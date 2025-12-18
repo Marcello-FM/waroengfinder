@@ -67,7 +67,7 @@ export const AdminDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#052e16] via-[#15803d] to-[#fef9c3] p-6 font-sans">
+    <div className="min-h-screen bg-linear-to-b from-[#052e16] via-[#15803d] to-[#fef9c3] p-6 font-sans">
       <div className="max-w-6xl mx-auto">
         <div className="flex justify-between items-center mb-8 bg-[linear-gradient(90deg,rgba(56,118,71,0.9)_0%,rgba(255,232,135,0.9)_100%)] p-6 rounded-2xl shadow-[0_12px_30px_rgba(0,0,0,0.35)] border border-white/20">
           <div>
