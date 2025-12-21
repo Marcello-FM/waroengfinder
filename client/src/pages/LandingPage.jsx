@@ -8,7 +8,8 @@ export const LandingPage = () => {
   useEffect(() => {
     const fetchMenus = async () => {
       try {
-        const apiUrl = import.meta.env.VITE_API_URL || 'https://waroengfinder-production-948c.up.railway.app';
+        // Menggunakan URL Railway yang kamu berikan sebelumnya
+        const apiUrl = 'https://waroengfinder-production-948c.up.railway.app';
         const response = await fetch(`${apiUrl}/api/landing/featured`);
         const data = await response.json();
         setFeaturedMenus(data);
@@ -165,7 +166,7 @@ export const LandingPage = () => {
         </div>
       </main>
 
-      {/* Featured Menu Section (Bagian Baru) */}
+      {/* Featured Menu Section */}
       <section className="bg-white py-16 px-4 md:py-20 relative z-10 rounded-t-[3rem] -mt-10 shadow-[0_-20px_60px_rgba(0,0,0,0.1)]">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
@@ -209,8 +210,9 @@ export const LandingPage = () => {
                       <h3 className="text-lg font-bold text-gray-900 line-clamp-1 group-hover:text-emerald-700 transition-colors">
                         {menu.name}
                       </h3>
+                      {/* PERBAIKAN DI SINI: Format Harga Menangani NaN */}
                       <p className="text-emerald-600 font-bold text-sm whitespace-nowrap bg-emerald-50 px-2 py-1 rounded-md">
-                        {Number(menu.price).toLocaleString('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0, maximumFractionDigits: 0 })}
+                        {Number(String(menu.price).replace(/[^0-9]/g, "") || 0).toLocaleString('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0, maximumFractionDigits: 0 })}
                       </p>
                     </div>
 
