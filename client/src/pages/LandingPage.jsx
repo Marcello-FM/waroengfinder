@@ -8,7 +8,7 @@ export const LandingPage = () => {
   useEffect(() => {
     const fetchMenus = async () => {
       try {
-        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+        const apiUrl = import.meta.env.VITE_API_URL || 'https://waroengfinder-production-948c.up.railway.app';
         const response = await fetch(`${apiUrl}/api/landing/featured`);
         const data = await response.json();
         setFeaturedMenus(data);
