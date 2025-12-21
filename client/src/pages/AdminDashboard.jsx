@@ -9,11 +9,9 @@ export const AdminDashboard = () => {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("authUser"));
-    // Proteksi: Kalau bukan admin@gmail.com, tendang keluar
     if (!user || user.email !== "admin@gmail.com") {
       navigate("/beranda");
     }
-    // eslint-disable-next-line react-hooks/immutability
     fetchRequests();
   }, [navigate]);
 
