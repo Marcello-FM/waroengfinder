@@ -192,7 +192,13 @@ app.put("/warungs/:id", async (req, res) => {
       SET name = $1, address = $2, rating_avg = $3, image_url = $4
       WHERE id = $5 RETURNING *;
     `;
-    const result = await pool.query(query, [name, address, rating_avg, image_url, id]);
+    const result = await pool.query(query, [
+      name,
+      address,
+      rating_avg,
+      image_url,
+      id,
+    ]);
 
     if (result.rowCount === 0) {
       return res.status(404).json({ error: "Warung tidak ditemukan" });
@@ -225,6 +231,32 @@ app.post("/reviews", async (req, res) => {
     res.json(newReview.rows[0]);
   } catch (err) {
     res.status(500).json({ error: err.message });
+  }
+});
+
+app.get("/api/landing/featured", async (req, res) => {
+  try {
+    const query = `
+      SELECT 
+        m.id, 
+        m.name, 
+        m.price, 
+        m.image, 
+        w.name as warung_name, 
+        w.address,
+        COALESCE(AVG(r.rating), 0) as rating
+      FROM menus m
+      JOIN warungs w ON m.warung_id = w.id
+      LEFT JOIN reviews r ON w.id = r.warung_id
+      GROUP BY m.id, w.id
+      ORDER BY RANDOM()
+      LIMIT 6
+    `;
+    const { rows } = await pool.query(query);
+    res.json(rows);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
   }
 });
 
