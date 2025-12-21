@@ -241,14 +241,15 @@ app.get("/api/landing/featured", async (req, res) => {
         m.id, 
         m.name, 
         m.price, 
-        m.image, 
+        -- m.image KITA HAPUS KARENA TIDAK ADA DI DATABASE
         w.name as warung_name, 
         w.address,
+        w.image_url as image, -- KITA GANTI PAKAI GAMBAR WARUNG SAJA BIAR CANTIK
         COALESCE(AVG(r.rating), 0) as rating
       FROM menus m
       JOIN warungs w ON m.warung_id = w.id
       LEFT JOIN reviews r ON w.id = r.warung_id
-      GROUP BY m.id, w.id
+      GROUP BY m.id, w.id, w.image_url
       ORDER BY RANDOM()
       LIMIT 6
     `;
